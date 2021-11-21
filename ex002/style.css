@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+    background-color: rgb(121, 179, 146);
+}
+input[type="number"] {
+    width: 50px;
+}
+
+main {
+    margin: auto;
+    max-width: 550px;
+ 
+}
+
+section {
+    max-width: 550px;
+    background-color: white;
+    margin: auto;
+    
+}
+
+footer {
+    background-color: white;
+    margin-top: 250px;
+    margin-left: 1000px
+}

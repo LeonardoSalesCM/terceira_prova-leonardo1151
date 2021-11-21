@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sálarios de Funcionários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+
+
+
+    <hr><h1>Salarios dos Funcionários</h1><hr>
+    </section>
+    
+
+    <main>
+    <section id="entrada">
+
+        
+        <hr><h1>Cadastrar Salário de Funcionários</h1>
+        
+
+        <form action="form.php" method="get" onsubmit="return cadastrar()">
+                <label for="pessoas" >Quantos funcionários serão cadastrados?</label>
+                <input type="number" name="pessoas" id="pessoas" min="0" value="5">
+                <input type="submit" value="Cadastrar"> 
+        </form>
+    </section>
+
+    <section id="saida">
+        <hr><h1>Análise de Dados</h1>
+        <p id="resultado">O resultado vai aparecer aqui</p>
+    </main>
+    
+        <script>
+            let saida = document.getElementById("saida")
+            let res = document.getElementById("resultado")
+
+            function cadastrar() {
+            let total = Number(document.getElementById("pessoas").value)
+
+            let sal = 0
+            let soma = 0
+            let maiorsal = 0
+            let menorsal = 0
+
+            let cont = 1
+            while (cont <= total) {
+                sal = Number(prompt(`Salário da ${cont}a pessoa`))
+                soma += sal
+
+                if (cont == 1) { 
+                    maiorsal = sal
+                    menorsal = sal
+
+                } else {
+                    if (sal > maiorsal) {
+                        maiorsal = sal
+                    }
+                    if (sal < menorsal) {
+                        menorsal = sal
+                    }
+                }
+                cont ++
+            }
+            media = Math.round(soma / total)
+
+            res.innerHTML = `O valor total que a empresa deve pagar é R$${soma}.<br>A média salarial é de R$${media}.<br>O maior salario é R$${maiorsal}. <br>O menor salario é R$${menorsal}.`
+        
+            
+
+            return false
+            }
+        </script>
+</body>
+
+<footer>
+    <p><b><hr>Nome: Leonardo Sales de Castro Monteiro</b><br>
+        <b>Turma: 1151 - Informática para Internet</b><hr></p>
+</footer>
+</html>

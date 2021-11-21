@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financiamento de um Carro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div>
+            <h1>Financiamento de um Carro &#x1F697</h1>
+        </div>
+    
+    <form action="form.php" method="get" onsubmit="return calcular()">
+        <fieldset>
+            <div>
+                <label for="modelo">Qual é o modelo do carro?</label><br>
+                <input type="text" name="modelo" id="modelo"> 
+            </div>
+
+            <div>
+                <label for="preco">Qual é o preço do carro?</label><br>
+                <input type="number" name="preco" id="preco">
+            </div>
+
+            <div>
+                <label for="parc">Em quantas parcelas você vai pagar?</label><br>
+                <input type="number" name="parc" id="parc" min="0" max="36" value="0">
+            </div>
+            <br>
+            <div id="botao">
+            <input type="submit" value="Calcular">
+            </div>
+
+
+        </fieldset>
+    </form>
+
+    <div>
+        <p id="res">Aqui vai aparecer o resultado</p>
+    </div>
+    
+
+    <script>
+
+    
+    
+    function calcular() {
+        let res = document.getElementById("res")
+        let mod = document.getElementById("modelo").value
+        let preco = Number(document.getElementById("preco").value)
+        let parc = Number(document.getElementById("parc").value)
+        
+
+        if (parc < 5) {
+            porc = 25 / 100
+            juros = preco * porc
+            total = preco + juros
+            valorparc = Math.round(preco / parc) 
+
+            res.innerHTML = `O preço do financiamento do seu carro, de modelo ${mod}, é de R$${preco}. <br> Você irá pagar R$${valorparc} em cada parcela, sem juros.`
+
+            if (parc == 0) {
+            
+            res.innerHTML = `O preço do financiamento do seu carro à vista é de R$${preco}.`
+
+            }
+
+        } else if (parc >= 5 && parc < 13) {
+            porc = 25 / 100
+            juros = preco * porc
+            total = preco + juros
+            valorparc = Math.round(total / parc) 
+
+            res.innerHTML = `O preço do financiamento do seu carro, de modelo ${mod}, é de R$${preco}.  <br> Com R$${juros} de juros, o valor total do carro será de R$${total}. <br> Parcelado em ${parc} vezes, você irá pagar aproximadamente R$${valorparc} em cada parcela, contando os juros. `
+            
+        
+        } else if (parc >= 13 && parc < 25) {
+            porc = 60 / 100
+            juros = preco * porc
+            total = preco + juros
+            valorparc = Math.round(total / parc) 
+
+            res.innerHTML = `O preço do financiamento do seu carro, de modelo ${mod}, é de R$${preco}.  <br> Com R$${juros} de juros, o valor total do carro será de R$${total}. <br> Parcelado em ${parc} vezes, você irá pagar aproximadamente R$${valorparc} em cada parcela, contando os juros. `
+        
+        } else if  (parc > 24) {
+            porc = 80 / 100
+            juros = preco * porc
+            total = preco + juros
+            valorparc = Math.round(total / parc)
+
+            res.innerHTML = `O preço do financiamento do seu carro, de modelo ${mod}, é de R$${preco}.  <br> Com R$${juros} de juros, o valor total do carro será de R$${total}. <br> Parcelado em ${parc} vezes, você irá pagar aproximadamente R$${valorparc} em cada parcela, contando os juros. `
+        }
+
+            
+        return false
+    }
+    </script>
+</body>
+
+<footer>
+    <p><b><hr>Nome: Leonardo Sales de Castro Monteiro</b><br>
+        <b>Turma: 1151 - Informática para Internet</b><hr></p>
+</footer>
+</html>
